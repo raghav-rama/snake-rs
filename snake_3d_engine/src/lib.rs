@@ -1,14 +1,22 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+use winit::{
+    event::{Event, WindowEvent},
+    event_loop::{ControlFlow, EventLoop},
+    window::WindowBuilder,
+};
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn run() {
+    let event_loop = EventLoop::new().unwrap();
+    let _window = WindowBuilder::new().build(&event_loop).unwrap();
+    event_loop.set_control_flow(ControlFlow::Poll);
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+    let _ = event_loop.run(move |event, elwt| match event {
+        Event::WindowEvent {
+            event: WindowEvent::CloseRequested,
+            ..
+        } => {
+            println!("The close button was pressed; stopping");
+            elwt.exit();
+        }
+        _ => (),
+    });
 }
