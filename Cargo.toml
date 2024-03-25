@@ -1,0 +1,3 @@
+[workspace]
+members = ["snake_3d_engine", "snake_3d_game"]
+resolver = "2"
