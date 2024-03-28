@@ -1,3 +1,3 @@
 fn main() {
-    snake_3d_engine::run();
+    futures::executor::block_on(snake_3d_engine::run());
 }
