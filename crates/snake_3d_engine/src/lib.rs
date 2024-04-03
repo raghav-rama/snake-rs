@@ -81,6 +81,8 @@ pub async fn run() {
         queue,
         config,
     };
+    // Implement a way to pass the wgpu_state to the game loop
+    // let _ = game_loop(wgpu_state);
 
     let _ = event_loop.run(move |event, elwt| match event {
         Event::WindowEvent {
