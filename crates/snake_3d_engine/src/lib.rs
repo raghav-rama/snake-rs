@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#![allow(unused_unsafe)]
 use std::path::PathBuf;
 
 use wgpu::{
