@@ -54,7 +54,7 @@ pub async fn run() {
 
     let device_descriptor = DeviceDescriptor {
         label: None,
-        required_features: Features::all(),
+        required_features: Features::default(),
         required_limits: Limits::default(),
     };
 
