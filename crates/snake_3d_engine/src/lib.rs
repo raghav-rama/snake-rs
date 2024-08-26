@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 #![allow(unused_unsafe)]
 #![allow(unused_variables)]
+mod vertex;
+
 use std::path::PathBuf;
 
 use wgpu::{
