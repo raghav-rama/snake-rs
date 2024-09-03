@@ -1,11 +1,11 @@
 #[repr(C)]
 #[derive(Debug, Copy, Clone, bytemuck::Pod, bytemuck::Zeroable)]
-struct Vertex {
+pub struct Vertex {
     position: [f32; 3],
 }
 
 impl Vertex {
-    fn desc<'a>() -> wgpu::VertexBufferLayout<'a> {
+    pub fn desc<'a>() -> wgpu::VertexBufferLayout<'a> {
         wgpu::VertexBufferLayout {
             array_stride: std::mem::size_of::<Vertex>() as wgpu::BufferAddress,
             step_mode: wgpu::VertexStepMode::Vertex,
@@ -18,7 +18,7 @@ impl Vertex {
     }
 }
 
-const VERTICES: &[Vertex] = &[
+pub const VERTICES: &[Vertex] = &[
     Vertex {
         position: [0.0, 0.5, 0.0],
     }, // Top vertex
