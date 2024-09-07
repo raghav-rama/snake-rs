@@ -29,7 +29,7 @@ struct WgpuState<'a> {
     vertex_buffer: wgpu::Buffer,
 }
 
-pub async fn run() {
+pub async fn run() -> Result<(), wgpu::SurfaceError> {
     let event_loop = EventLoop::new().unwrap();
     let _window = WindowBuilder::new().build(&event_loop).unwrap();
     event_loop.set_control_flow(ControlFlow::Poll);
@@ -179,14 +179,15 @@ pub async fn run() {
         }
         Event::AboutToWait => {
             // Redraw the frame
-            render(&mut wgpu_state);
+            render(&mut wgpu_state).unwrap();
             elwt.set_control_flow(ControlFlow::Poll);
         }
         _ => (),
     });
+    Ok(())
 }
 
-fn render(wgpu_state: &mut WgpuState) {
+fn render(wgpu_state: &mut WgpuState) -> Result<(), wgpu::SurfaceError> {
     let output = wgpu_state.surface.get_current_texture().unwrap();
     let view = output
         .texture
@@ -226,4 +227,5 @@ fn render(wgpu_state: &mut WgpuState) {
 
     wgpu_state.queue.submit(std::iter::once(encoder.finish()));
     output.present();
+    Ok(())
 }
