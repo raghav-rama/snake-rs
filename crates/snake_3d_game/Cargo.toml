@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 snake_3d_engine = { path = "../snake_3d_engine" }
 futures = "0.3.30"
+tokio = "1.40.0"
